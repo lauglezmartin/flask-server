@@ -12,6 +12,7 @@ def saludo():
         <p>Este es tu primer servidor Python funcionando.</p>
     """
 
+
 # Ruta 1: Devuelve un HTML renderizado con Jinja2
 @app.route("/")
 def home():
@@ -33,25 +34,27 @@ def multiplicar(numero1, numero2):
         f"<h1>Multiplicar {numero1} x {numero2} y da resultado {numero1 * numero2}</h1>"
     )
 
+
 # Ruta 4: Devuelve un HTML renderizado con Jinja2
 @app.route("/catalogo/<int:id_producto>")
 def catalogo(id_producto):
-    productos =[
+    productos = [
         {"id": 1, "nombre": "Teclado", "precio": 10.99, "disponible": True},
         {"id": 2, "nombre": "Monitor", "precio": 199.99, "disponible": False},
         {"id": 3, "nombre": "Ratón", "precio": 5.49, "disponible": True},
     ]
-    return render_template("catalogo.html", nombre="algo", id_producto=id_producto, lista_productos=productos)
+    return render_template(
+        "catalogo.html",
+        nombre="algo",
+        id_producto=id_producto,
+        lista_productos=productos,
+    )
+
 
 # Ruta 5: Devuelve un saludo personalizado con nombre y edad
 @app.route("/saludo/<name>/<int:edad>")
 def saludo_personalizado(name, edad):
-    return f"""
-        <h1>¡Hola {name}!</h1>
-        <p>Tienes {edad} años.</p>
-    """
-render_template("index.html", nombre="Juan", edad=30)
-
+    return render_template("index.html", nombre=name, edad=edad)
 
 
 if __name__ == "__main__":
