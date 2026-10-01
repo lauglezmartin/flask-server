@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Productos</title>
+</head>
+
+<body>
+    <h1>Catálogo de Productos</h1>
+    <h2>Nombre: {{nombre}}</h2>
+    <p>Mostrando el producto con ID: {{id_producto}}</p>
+
+    <ul>
+        {% for prod in lista_productos %}
+        <li>
+            <strong>{{ prod.nombre }}</strong> - ${{ prod.precio }}
+
+            {% if prod.disponible %}
+            <span style="color: green;">(En stock)</span>
+            {% else %}
+            <span style="color: red;">(Agotado)</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
