@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Producto{% endblock %}
+
+{% block content %}
+    <h2>Producto:</h2>
+    <ul>
+        <li>Nombre: <strong>{{ producto.nombre }}</strong></li>
+        <li>Precio: <strong>${{ "%.2f"|format(producto.precio) }}</strong></li>
+        <li>Disponible: <strong>{{ "Sí" if producto.disponible else "No" }}</strong></li>
+    </ul>
+{% endblock %}
+

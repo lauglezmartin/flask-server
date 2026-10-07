@@ -8,16 +8,18 @@
 
     <body>
         <header>
-        <h1>Esta es la Cabecera de mi aplicacion</h1>
+        <h1>Esta es la Cabecera de mi aplicación</h1>
         <hr/>
         <nav>
             <ul>
-
                 <li>
                     <a href="/">Inicio</a>
                 </li>
                 <li>
-                    <a href="saludo/">Saluda</a>
+                    <a href="{{ url_for('saludo_personalizado', name='Laura', edad=25) }}">Saludo Personalizado</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('catalogo') }}">Catálogo</a>
                 </li>
             </ul>
         </nav>

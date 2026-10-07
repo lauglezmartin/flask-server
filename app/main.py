@@ -1,7 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 # Inicializamos la aplicación
 app = Flask(__name__)
+
+productos = [
+    {"id": 1, "nombre": "Teclado", "precio": 10.99, "disponible": True},
+    {"id": 2, "nombre": "Monitor", "precio": 199.99, "disponible": False},
+    {"id": 3, "nombre": "Ratón", "precio": 5.49, "disponible": True},
+]
 
 
 # Ruta 0: Devuelve un saludo simple
@@ -36,28 +42,29 @@ def multiplicar(numero1, numero2):
 
 
 # Ruta 4: Devuelve un HTML renderizado con Jinja2
-@app.route("/catalogo/<int:id_producto>")
-def catalogo(id_producto):
-    productos = [
-        {"id": 1, "nombre": "Teclado", "precio": 10.99, "disponible": True},
-        {"id": 2, "nombre": "Monitor", "precio": 199.99, "disponible": False},
-        {"id": 3, "nombre": "Ratón", "precio": 5.49, "disponible": True},
-    ]
+@app.route("/catalogo/")
+def catalogo():
     return render_template(
         "catalogo.html",
         nombre="algo",
-        id_producto=id_producto,
         lista_productos=productos,
     )
 
 
+@app.route("/catalogo/<int:idProducto>")
+def producto(idProducto):
+    return render_template(
+        "producto.html", idProducto=idProducto, producto=productos[idProducto])  
+
 # Ruta 5: Devuelve un saludo personalizado con nombre y edad
 @app.route("/saludo/<name>/<int:edad>")
 def saludo_personalizado(name, edad):
-    return render_template("index.html", nombre=name, edad=edad)
+    return render_template("saludo.html", nombre=name, edad=edad)
 
 
 if __name__ == "__main__":
     # host='0.0.0.0' es VITAL en Docker para que el servidor sea accesible desde fuera del contenedor
     # debug=True hará que el servidor se reinicie automáticamente si cambias este archivo
     app.run(host="0.0.0.0", port=5000, debug=True)
+
+
