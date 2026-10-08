@@ -10,8 +10,9 @@
     {% for producto in lista_productos %}
     <li>
         <strong>
-            <a href="{{ url_for('producto', idProducto = loop.index -1) }}"></a>
-            {{ producto.nombre }}
+            <a href="{{ url_for('producto', idProducto = loop.index -1) }}">
+                {{ producto.nombre }}
+            </a>
         </strong> 
         ${{ producto.precio }}
 

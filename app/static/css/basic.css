@@ -1,0 +1,36 @@
+header {
+    background-color: #021f3f;
+}
+
+header h1{
+    color: #ffffff;
+    font-size: 2em;
+    margin: 0;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1em;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #38bdf8;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #e0f2fe;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+}

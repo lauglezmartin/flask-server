@@ -3,6 +3,7 @@
 {% block content %}
     <h1>Este es el contenido del index</h1>
     <p>Bienvenido a la página de inicio.</p>
+    <img src="{{ url_for('static', filename='img/aguila.png') }}" alt="Imagen de ejemplo">
 {% endblock %}
 
 {% block title %}Página de Inicio{% endblock %}
